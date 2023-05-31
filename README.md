@@ -10,4 +10,8 @@ Esta tabla tiene como proposito dar seguimiento al desarrollo de un torneo de fu
 
 2)_ Realizar la iserción de datos: Abrir y ejecutar el archivo 'Scriptin RECHE'.
 
+3)_ Realizar la inserción masiva desde los csv.
+
+4)_ Ejecutar el script SCRIPTVIEWS-RECHE para dar creación a las vistas.
+
 Saludos!
