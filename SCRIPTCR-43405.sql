@@ -29,7 +29,7 @@ CREATE TABLE asistentes (
 CREATE TABLE arbitros (
 	national_id INT NOT NULL,
     nombre VARCHAR(30) NOT NULL,
-    fecha_nacimineto DATE NOT NULL,
+    fecha_nacimiento DATE NOT NULL,
     PRIMARY KEY(national_id)
 );
 
@@ -97,12 +97,20 @@ CREATE TABLE partidos (
 );
 
 CREATE TABLE tarjetas (
-	id INT NOT NULL AUTO_INCREMENT,
+	tarjeta_id INT NOT NULL AUTO_INCREMENT,
     national_id INT NOT NULL,
     tipo_tarjeta VARCHAR(35) NOT NULL,
-    id_partido INT NOT NULL,
-    PRIMARY KEY(id),
-    FOREIGN KEY(national_id) REFERENCES jugadores(national_id),
+    partido INT NOT NULL,
+    PRIMARY KEY(tarjeta_id),
+    FOREIGN KEY(national_id) REFERENCES jugadores(national_id)
+);
+
+CREATE TABLE tarjetas_dt (
+	tarjeta_id INT NOT NULL AUTO_INCREMENT,
+    national_id INT NOT NULL,
+    tipo_tarjeta VARCHAR(35) NOT NULL,
+    partido INT NOT NULL,
+    PRIMARY KEY(tarjeta_id),
     FOREIGN KEY(national_id) REFERENCES directores_tecnicos(national_id)
 );
 
@@ -119,6 +127,7 @@ CREATE TABLE cuerpo_arbitros (
 
 CREATE TABLE posiciones(
 	id_equipo INT NOT NULL,
+    partidos_jugados INT,
     partidos_ganados INT NOT NULL,
     partidos_perdidos INT NOT NULL,
     empatados INT NOT NULL,
@@ -126,3 +135,13 @@ CREATE TABLE posiciones(
 	PRIMARY KEY(id_equipo),
     FOREIGN KEY(id_equipo) REFERENCES equipos(id_equipo)
 ); 
+
+CREATE TABLE goles(
+	id_jugador INT NOT NULL,
+    id_partido INT NOT NULL,
+    minuto DECIMAL(5,2),
+    tipo_gol VARCHAR(30),
+    PRIMARY KEY(id_jugador),
+    FOREIGN KEY(id_jugador) REFERENCES jugadores(national_id),
+    FOREIGN KEY(id_partido) REFERENCES partidos(id_partido)
+);
