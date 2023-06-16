@@ -48,6 +48,18 @@ INNER JOIN posiciones p
 ON e.id_equipo = p.id_equipo
 ORDER BY p.puntaje DESC;
 
+
+/*..........PROPENSOS AL DESCENSO..........*/
+
+CREATE VIEW PROPENSOS_A_DESCENDER AS
+SELECT e.nombre as equipo, p.puntaje, p.partidos_ganados, p.partidos_perdidos,
+p.partidos_jugados, p.empatados
+FROM equipos E
+INNER JOIN posiciones p
+ON e.id_equipo = p.id_equipo
+ORDER BY p.puntaje ASC
+LIMIT 5;
+
 /*-------------------------------2) FUNCIONES PARA UN TORNEO DE FUBTOL ------------------------------*/
 
 
